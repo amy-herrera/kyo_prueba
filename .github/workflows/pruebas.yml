@@ -1,0 +1,25 @@
+name: Ejecutar Pruebas Automáticas
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v2
+
+    - name: Configurar ambiente Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Instalar dependencias
+      run: pip install numpy  # Instala NumPy u otras dependencias si las hay
+
+    - name: Ejecutar pruebas
+      run: python main.py
